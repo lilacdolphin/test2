@@ -48,13 +48,17 @@ Your browser does not support the audio element.
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 <script>
-var x = document.getElementById("demo");
+$(function(){
+  document.addEventListener("deviceready", onDeviceReady, false);
+})
+    function onDeviceReady(){
+    var x = document.getElementById("demo");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
-
+    }
 function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
